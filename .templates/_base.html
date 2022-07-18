@@ -1,12 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>یامی فینگر فود</title>
-  </head>
-  <body>
-    {% block content %}
-    {% endblock content %}
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy Finger Food - یامی فینگر فود</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
+</head>
+<body class="p-3 mb-2 bg-light text-dark">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'home'%}">خانه</a>
+                        </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">پروفایل</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">سفارش جدید</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">سفارشات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">خروج</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">ورود</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">ثبت نام</a>
+                        </li>
+                    {% endif %}
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container my-2 py-2">
+        <div class="row">
+            <div class= "col-md-3">
+                    <a class="list-group-item list-group-item-action list-group-item-primary active" aria-current="true">
+                      منو
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">کیک ها</a>
+                    <a href="#" class="list-group-item list-group-item-action">سالاد ها</a>
+                    <a href="#" class="list-group-item list-group-item-action">غذای های کیلویی</a>
+                    <a href="#" class="list-group-item list-group-item-action">مینی ساندویچ</a>
+                    <a href="#" class="list-group-item list-group-item-action">سوخاری</a>
+                    <a href="#" class="list-group-item list-group-item-action">دسر</a>
+                    <a href="#" class="list-group-item list-group-item-action">دلمه</a>
+                    <a href="#" class="list-group-item list-group-item-action">بورک</a>
+                    <a href="#" class="list-group-item list-group-item-action">سینی میوه</a>
+            </div>
+            <div class="col-md-9">
+                <div class="card text-dark bg-light mb-3 border-dark mb-3">
+                    <div class="card-body">
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="container">
+        <footer>
+            <div class="card text-dark bg-light mb-3 border-dark mb-3">
+                <div class="card-body col-md-12">
+                    <p class="text-center">Copyright: <a href="mailto:hosseinyazdani1376@gmail.com">Hossein Yazdani</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
 </html>
