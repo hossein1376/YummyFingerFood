@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<h2>{{category_name}}</h2><br>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tbody>
+                {% for item in items %}
+                    <tr><td>{{item.title}}
+                    {% if item.description != NULL %}
+                        <small class="text-muted">&nbsp;{{item.description}}</></small></td>
+                    {% endif %}
+                    <td>{{item.price}}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content%}
