@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class="d-flex justify-content-center">ثبت نام</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="container mx-auto">
+    {{ form|crispy }}
+  </div>
+  <div class="container d-grid col-2">
+  <button type="submit" class="btn btn-primary">ثبت نام</button>
+  </div>
+  
+</form>
+{% endblock content %}

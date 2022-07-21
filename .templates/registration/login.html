@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class="d-flex justify-content-center">ورود</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="container mx-auto">
+    {{ form|crispy }}
+  </div>
+  
+  <div class="container p-3 d-grid col-2">
+    <button type="submit" class="btn btn-primary">ورود</button>
+  </div>
+  
+</form>
+{% endblock content %}
