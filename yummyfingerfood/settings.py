@@ -25,10 +25,12 @@ INSTALLED_APPS = [
 
     # 3rd Party Apps
     'crispy_forms',
+    'rest_framework',
 
     # Local Apps
     'accounts',
     'menu',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -112,3 +114,10 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Custom User Model
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# Django REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
