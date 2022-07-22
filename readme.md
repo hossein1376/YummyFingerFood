@@ -5,7 +5,8 @@ A simple restaurant website created with Django. It features:
 - User app with registration, authentication and profile
 - Menu app
 - Ordring app
-- Test Cases
+- API endpoints
 - Custom User Model
+- Test Cases
 
-I'm planning to add an API endpoint for integrating via a front-end framework later on.
+The API endpoint is intended to be integrated with a front-end framework (such as React) if the need arises later on.
