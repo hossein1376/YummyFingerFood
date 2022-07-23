@@ -10,20 +10,17 @@ class Menu(models.Model):
     class Meta:
         abstract = True
 
+    def __str__(self):
+        return self.title
+
 
 class Cake(Menu):
     class Meta:
         verbose_name = ('کیک')
         verbose_name_plural = ('کیک ها')
 
-    def __str__(self):
-        return self.title
-
 
 class Salad(Menu):
     class Meta:
         verbose_name = ('سالاد')
         verbose_name_plural = ('سالاد ها')
-
-    def __str__(self):
-        return self.title
