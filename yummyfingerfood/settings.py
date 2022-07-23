@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     # 3rd Party Apps
     'crispy_forms',
     'rest_framework',
+    'phonenumber_field',
 
     # Local Apps
     'accounts',
@@ -114,6 +115,11 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Custom User Model
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# django-phonenumber-field Settings
+PHONENUMBER_DB_FORMAT = "RFC3966"
+PHONENUMBER_DEFAULT_FORMAT = "RFC3966"
+PHONENUMBER_DEFAULT_REGION = "IR"
 
 # Django REST Framework
 REST_FRAMEWORK = {
