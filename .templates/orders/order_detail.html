@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <h4>شماره سفارش: {{order.id}}</h4>
+    <h5>ثبت شده در تاریخ {{order.order_date}}</h5>
+    <p>جزئیات سفارش:
+        <ul>
+            {% for cake in order.cake.all %}
+            <li>{{cake}}</li>
+            {% endfor %}
+        </ul>
+
+        <ul>
+            {% for salad in order.salad.all %}
+            <li>{{salad}}</li>
+            {% endfor %}
+        </ul>
+        
+        با توضیحات:
+        <blockquote>{{order.description|safe}}</blockquote>
+        <hr>
+    </p>
+    <div>
+        <a type="button" class="btn btn-warning" href="{% url 'order_edit' order.id %}">ویرایش</a>
+        <a type="button" class="btn btn-danger" href="{% url 'order_delete' order.id %}">حذف</a>
+    </div>
+{% endblock content %}
