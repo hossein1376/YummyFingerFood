@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=300, verbose_name='عنوان')),
-                ('price', models.CharField(max_length=300, verbose_name='قیمت')),
+                ('price', models.PositiveIntegerField(verbose_name='قیمت (هزار تومن)')),
                 ('description', models.CharField(blank=True, max_length=300, null=True, verbose_name='توضیحات (در صورت نیاز)')),
             ],
             options={
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=300, verbose_name='عنوان')),
-                ('price', models.CharField(max_length=300, verbose_name='قیمت')),
+                ('price', models.PositiveIntegerField(verbose_name='قیمت (هزار تومن)')),
                 ('description', models.CharField(blank=True, max_length=300, null=True, verbose_name='توضیحات (در صورت نیاز)')),
             ],
             options={

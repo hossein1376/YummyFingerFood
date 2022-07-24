@@ -3,7 +3,7 @@ from django.db import models
 
 class Menu(models.Model):
     title = models.CharField(max_length=300, verbose_name='عنوان')
-    price = models.CharField(max_length=300, verbose_name='قیمت')
+    price = models.PositiveIntegerField(verbose_name='قیمت (هزار تومن)')
     description = models.CharField(
         max_length=300, blank=True, null=True, verbose_name='توضیحات (در صورت نیاز)')
 
