@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-from menu.models import Cake
-from menu.models import Salad
+from menu.models import Cake, Salad
 
 
 class CakeSerializer(serializers.ModelSerializer):

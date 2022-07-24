@@ -1,7 +1,6 @@
 from django.views.generic import ListView
-from .models import (
-    Cake, Salad,
-)
+
+from .models import Cake, Salad
 
 
 class Menu(ListView):

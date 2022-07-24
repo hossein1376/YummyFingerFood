@@ -1,5 +1,7 @@
 from rest_framework import generics
+
 from menu.models import Cake, Salad
+
 from .serializers import CakeSerializer, SaladSerializer
 
 
