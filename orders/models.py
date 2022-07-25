@@ -12,7 +12,9 @@ class OrderModel(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name='کاربر')
     order_date = models.DateTimeField(
-        default=timezone.now, verbose_name='تاریخ ثبت سفارش')
+        auto_now_add=True, verbose_name='تاریخ ثبت سفارش')
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name='آخرین ویرایش')
 
     cake = models.ManyToManyField(
         Cake, blank=True, verbose_name='کیک ها')
@@ -27,6 +29,6 @@ class OrderModel(models.Model):
 
     def __str__(self):
         return f'سفارش کاربر {self.user} | شماره سفارش: {self.id}'
-    
+
     def get_absolute_url(self):
         return reverse('order_detail', kwargs={'pk': self.pk})
