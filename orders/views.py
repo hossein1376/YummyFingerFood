@@ -25,13 +25,12 @@ class OrderHistoryView(LoginRequiredMixin, ListView):
     login_url = 'login'
 
     context_object_name = 'orders'
-    ordering = ['-order_date']
     # paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        request_user = self.request.user
-        context['request_user'] = request_user
+        orders = OrderModel.objects.filter(user=self.request.user).order_by('-order_date')
+        context['orders'] = orders
         return context
 
 

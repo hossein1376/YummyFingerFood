@@ -2,10 +2,8 @@
 
 {% block content %}
     {% for order in orders%}
-        {% if order.user == request_user %}
-            <a href="{% url 'order_detail' order.id %}"><h4>شماره سفارش: {{order.id}}</h4></a>
-            <p>ثبت شده در تاریخ {{order.order_date}}</p>
-            <hr>
-        {% endif %}
+        <a href="{% url 'order_detail' order.id %}"><h4>شماره سفارش: {{order.id}}</h4></a>
+        <p>ثبت شده در تاریخ {{order.order_date}}</p>
+        <hr>
     {% endfor %}
 {% endblock content %}
