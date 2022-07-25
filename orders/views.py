@@ -26,7 +26,7 @@ class OrderHistoryView(LoginRequiredMixin, ListView):
 
     context_object_name = 'orders'
     ordering = ['-order_date']
-    paginate_by = 5
+    # paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
