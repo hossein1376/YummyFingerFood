@@ -11,7 +11,7 @@ class NewOrderView(LoginRequiredMixin, CreateView):
     form_class = OrderForm
     template_name = 'orders/order_new.html'
     login_url = 'login'
-    
+
     success_url = reverse_lazy('order_history')
 
     def form_valid(self, form):
@@ -23,17 +23,23 @@ class OrderHistoryView(LoginRequiredMixin, ListView):
     model = OrderModel
     template_name = 'orders/order_history.html'
     login_url = 'login'
-    
+
     context_object_name = 'orders'
     ordering = ['-order_date']
     paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        request_user = self.request.user
+        context['request_user'] = request_user
+        return context
 
 
 class OrderDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = OrderModel
     template_name = 'orders/order_detail.html'
     login_url = 'login'
-    
+
     context_object_name = 'order'
 
     def test_func(self):
@@ -61,7 +67,7 @@ class OrderDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = OrderModel
     template_name = 'orders/order_delete.html'
     login_url = 'login'
-    
+
     context_object_name = 'order'
     success_url = reverse_lazy('order_history')
 
