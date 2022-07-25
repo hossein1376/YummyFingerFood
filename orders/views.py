@@ -1,12 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.http import Http404
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
-from orders.models import OrderModel
-
 from .forms import OrderForm
+from .models import OrderModel
 
 
 class NewOrderView(LoginRequiredMixin, CreateView):
