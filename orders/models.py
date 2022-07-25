@@ -29,6 +29,3 @@ class OrderModel(models.Model):
 
     def __str__(self):
         return f'سفارش کاربر {self.user} | شماره سفارش: {self.id}'
-
-    def get_absolute_url(self):
-        return reverse('order_detail', kwargs={'pk': self.pk})
