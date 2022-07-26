@@ -5,5 +5,8 @@
         <a href="{% url 'order_detail' order.id %}"><h4>شماره سفارش: {{order.id}}</h4></a>
         <p>ثبت شده در تاریخ {{order.order_date}}</p>
         <hr>
+    {% empty %}
+        <h5>هنوز سفارشی ثبت نکرده اید!</h5>
+        <a type="button" class="btn btn-primary" href="{% url 'new_order' %}">ثبت سفارش جدید</a>
     {% endfor %}
 {% endblock content %}

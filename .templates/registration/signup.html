@@ -8,8 +8,9 @@
   <div class="container mx-auto">
     {{ form|crispy }}
   </div>
-  <div class="container d-grid col-2">
+  <div>
   <button type="submit" class="btn btn-primary">ثبت نام</button>
+  <a type="button" class="btn btn-info" href="{% url 'login' %}">ثبت نام کرده اید؟ ورود</a>
   </div>
   
 </form>
