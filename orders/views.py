@@ -29,7 +29,8 @@ class OrderHistoryView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        orders = OrderModel.objects.filter(user=self.request.user).order_by('-order_date')
+        orders = OrderModel.objects.filter(
+            user=self.request.user).order_by('-order_date')
         context['orders'] = orders
         return context
 
@@ -60,7 +61,7 @@ class OrderEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if self.request.user == order.user:
             return True
         return False
-    
+
     def get_success_url(self):
         return reverse('order_detail', kwargs={'pk': self.object.pk})
 
