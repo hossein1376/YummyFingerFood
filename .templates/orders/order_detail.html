@@ -1,32 +1,39 @@
 {% extends "_base.html" %}
 
 {% block content %}
+  <h4>شماره سفارش: {{order.id}}</h4>
+  <h5>ثبت شده در تاریخ {{order.order_date}}</h5>
 
-    <h4>شماره سفارش: {{order.id}}</h4>
-    <h5>ثبت شده در تاریخ {{order.order_date}}</h5>
-    {% if order.order_date != order.updated_at %}
-        <h6>آخرین ویرایش در {{order.updated_at}}</h6>
-    {% endif %}
-    <br>
-    <p>جزئیات سفارش:
-        <ul>
-            {% for cake in order.cake.all %}
-            <li>{{cake}}</li>
-            {% endfor %}
-        </ul>
+  {% if order.order_date != order.updated_at and order.editable == True %}
+    <h6>آخرین ویرایش در {{order.updated_at}}</h6>
+  {% endif %}
 
-        <ul>
-            {% for salad in order.salad.all %}
-            <li>{{salad}}</li>
-            {% endfor %}
-        </ul>
-        
-        با توضیحات:
-        <blockquote>{{order.description|safe}}</blockquote>
-        <hr>
-    </p>
+  {% if order.editable != True %}
+    <h6>سفارش شما پردازش شده است</h6>
+  {% endif %}
+  <br>
+  <p>جزئیات سفارش:
+    <ul>
+      {% for cake in order.cake.all %}
+      <li>{{cake}}</li>
+      {% endfor %}
+    </ul>
+
+    <ul>
+      {% for salad in order.salad.all %}
+      <li>{{salad}}</li>
+      {% endfor %}
+    </ul>
+    
+    با توضیحات:
+    <blockquote>{{order.description|safe}}</blockquote>
+    <hr>
+  </p>
+
+  {% if order.editable %}
     <div>
-        <a type="button" class="btn btn-warning" href="{% url 'order_edit' order.id %}">ویرایش</a>
-        <a type="button" class="btn btn-danger" href="{% url 'order_delete' order.id %}">حذف</a>
+      <a type="button" class="btn btn-warning" href="{% url 'order_edit' order.id %}">ویرایش</a>
+      <a type="button" class="btn btn-danger" href="{% url 'order_delete' order.id %}">حذف</a>
     </div>
+  {% endif %}
 {% endblock content %}

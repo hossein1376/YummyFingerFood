@@ -55,6 +55,7 @@ class OrderEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     login_url = 'login'
 
     fields = ('cake', 'salad', 'description')
+    context_object_name = 'order'
 
     def test_func(self):
         order = self.get_object()

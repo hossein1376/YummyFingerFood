@@ -1,26 +1,29 @@
 {% extends "_base.html" %}
 
 {% block content %}
-
+  {% if order.editable %}
     <h4>حذف سفارش با شماره: {{order.id}}</h4>
     <p>جزئیات سفارش:
-        <ul>
-            {% for cake in order.cake.all %}
-            <li>{{cake}}</li>
-            {% endfor %}
-        </ul>
+      <ul>
+        {% for cake in order.cake.all %}
+        <li>{{cake}}</li>
+        {% endfor %}
+      </ul>
 
-        <ul>
-            {% for salad in order.salad.all %}
-            <li>{{salad}}</li>
-            {% endfor %}
-        </ul>
-    
+      <ul>
+        {% for salad in order.salad.all %}
+        <li>{{salad}}</li>
+        {% endfor %}
+      </ul>
     </p>
+
     <p>آیا اطمینان دارید؟</p>
     <form method="post">
-        {% csrf_token %}
-        <a type="button" class="btn btn-info" href="{% url 'order_detail' order.id %}">نه، مرا برگردان</a>
-        <button type="submit" class="btn btn-danger">بله، حذف کن</button>
+      {% csrf_token %}
+      <a type="button" class="btn btn-info" href="{% url 'order_detail' order.id %}">نه، مرا برگردان</a>
+      <button type="submit" class="btn btn-danger">بله، حذف کن</button>
     </form>
+  {% else %}
+    <p>سفارش پردازش شده و امکان حذف آن وجود ندارد.</p>
+  {% endif %}
 {% endblock content %}

@@ -21,6 +21,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('order_date', models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ثبت سفارش')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='آخرین ویرایش')),
+                ('editable', models.BooleanField(default=True, verbose_name='قابل ویرایش')),
                 ('description', models.TextField(blank=True, max_length=500, null=True, verbose_name='توضیحات')),
                 ('cake', models.ManyToManyField(blank=True, to='menu.cake', verbose_name='کیک ها')),
                 ('salad', models.ManyToManyField(blank=True, to='menu.salad', verbose_name='سالاد ها')),

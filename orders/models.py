@@ -15,6 +15,7 @@ class OrderModel(models.Model):
         auto_now_add=True, verbose_name='تاریخ ثبت سفارش')
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name='آخرین ویرایش')
+    editable = models.BooleanField(default=True, verbose_name='قابل ویرایش')
 
     cake = models.ManyToManyField(
         Cake, blank=True, verbose_name='کیک ها')
