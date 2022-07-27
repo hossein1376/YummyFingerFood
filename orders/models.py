@@ -1,7 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.urls import reverse
-from django.utils import timezone
 
 from menu.models import Cake, Salad
 
@@ -9,6 +7,8 @@ User = get_user_model()
 
 
 class OrderModel(models.Model):
+    id = models.BigAutoField(
+        auto_created=True, primary_key=True, serialize=False, verbose_name='شماره سفارش')
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name='کاربر')
     order_date = models.DateTimeField(
@@ -27,6 +27,3 @@ class OrderModel(models.Model):
     class Meta:
         verbose_name = ('سفارش')
         verbose_name_plural = ('سفارش ها')
-
-    def __str__(self):
-        return f'سفارش کاربر {self.user} | شماره سفارش: {self.id}'

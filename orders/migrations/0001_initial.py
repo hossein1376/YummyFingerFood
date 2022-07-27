@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='OrderModel',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='شماره سفارش')),
                 ('order_date', models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ثبت سفارش')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='آخرین ویرایش')),
                 ('editable', models.BooleanField(default=True, verbose_name='قابل ویرایش')),
