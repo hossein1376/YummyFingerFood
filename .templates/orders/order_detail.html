@@ -1,15 +1,16 @@
 {% extends "_base.html" %}
+{% load jalali_tags %}
 
 {% block content %}
   <h4>شماره سفارش: {{order.id}}</h4>
-  <h5>ثبت شده در تاریخ {{order.order_date}}</h5>
+  <h5>ثبت شده در تاریخ {{order.order_date|to_jalali}}</h5>
 
   {% if order.order_date != order.updated_at and order.editable == True %}
-    <h6>آخرین ویرایش در {{order.updated_at}}</h6>
+    <h6>آخرین ویرایش در {{order.updated_at|to_jalali}}</h6>
   {% endif %}
 
   {% if order.editable != True %}
-    <h6>سفارش شما در {{order.updated_at}} پردازش شده است.</h6>
+    <h6>سفارش شما در {{order.updated_at|to_jalali}} پردازش شده است.</h6>
   {% endif %}
   <br>
   <p>جزئیات سفارش:

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd Party Apps
+    'jalali_date',
     'crispy_forms',
     'rest_framework',
     'phonenumber_field',
@@ -127,4 +128,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ]
+}
+
+# Jalali Calendar Settings
+JALALI_DATE_DEFAULTS = {
+    'Strftime': {
+        'datetime': '%Y/%m/%d - %H:%M',
+    }
 }
