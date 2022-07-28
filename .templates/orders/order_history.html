@@ -10,4 +10,22 @@
     <h5>هنوز سفارشی ثبت نکرده اید!</h5>
     <a type="button" class="btn btn-primary" href="{% url 'new_order' %}">ثبت سفارش جدید</a>
   {% endfor %}
+  
+  <div>
+    <span>
+      {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; اول</a>
+        <a href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+      {% endif %}
+
+      <span>
+        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}
+      </span>
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">بعدی</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">آخر &raquo;</a>
+      {% endif %}
+    </span>
+</div>
 {% endblock content %}
