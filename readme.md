@@ -13,6 +13,7 @@ It features:
   - Custom User Model
   - Utilize Phone Number instead of username
   - Registration and Authentication
+  - Change password
   - User Profile
 - Menu app
   - Anonymous visibility
@@ -31,7 +32,7 @@ The API endpoint is intended to be integrated with a front-end framework (such a
 
 ## Notice
 
-The website is almost fully localized into Persian using I18N and verbose_name. This is intended for end users.  
+The website is almost fully localized into Persian using I18N and verbose_name and it uses Jalali (Iranian) callander. This is intended for end users.  
 Everything back-end was kept in English and the naming is, I believe, fairly straightforward.  
 I'm planning to do an English version of the Website in future.
 
@@ -39,4 +40,4 @@ I'm planning to do an English version of the Website in future.
 
 Clone/download the project and install the dependencies (preferably inside a virtual environment) based on the `requirements.txt`.  
 Migrations are already included, run `python manage.py migrate` to apply them.  
-Create admin with `python manage.py createsuperuser` command. Then, run the server.
+Create admin with `python manage.py createsuperuser` command. Then, run the server with `python manage.py runserver`.
