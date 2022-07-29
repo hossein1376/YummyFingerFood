@@ -9,6 +9,7 @@ It features:
   - Authenticated-Only visibility
   - Place Order based on the Menu models (ManyToMany relation)
   - User cannot view or modify other users' Orders
+  - Admin can disable the edit and delete for processed Orders
 - Accounts app
   - Custom User Model
   - Utilize Phone Number instead of username
@@ -32,7 +33,7 @@ The API endpoint is intended to be integrated with a front-end framework (such a
 
 ## Notice
 
-The website is almost fully localized into Persian using I18N and verbose_name and it uses Jalali (Iranian) callander. This is intended for end users.  
+The website is almost fully localized into Persian using I18N and verbose_name and it uses Jalali (Iranian) calendar. This is intended for end users.  
 Everything back-end was kept in English and the naming is, I believe, fairly straightforward.  
 I'm planning to do an English version of the Website in future.
 
