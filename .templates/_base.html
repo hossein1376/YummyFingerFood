@@ -22,9 +22,19 @@
             <li class="nav-item">
               <a class="nav-link active" href="{% url 'profile' %}">پروفایل</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="{% url 'new_order' %}">سفارش جدید</a>
-            </li>
+
+            {% with total_items=cart|length %}
+              {% if total_items > 0 %}
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'cart_detail' %}">سبد خرید ({{ total_items }} قلم کالا)</a>
+                </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'cart_detail' %}">سبد خرید</a>
+              </li>
+              {% endif %}
+            {% endwith %}
+
             <li class="nav-item">
               <a class="nav-link active" href="{% url 'order_history' %}">سفارشات</a>
             </li>
@@ -47,12 +57,12 @@
   <div class="container my-2 py-2">
     <div class="row">
       <div class= "col-md-3">
-        <a class="list-group-item list-group-item-action list-group-item-primary active" aria-current="true">
+        <a href="{% url 'menu' %}" class="list-group-item list-group-item-action list-group-item-primary active" aria-current="true">
           منو
         </a>
-        <a href="{% url 'cake' %}" class="list-group-item list-group-item-action">کیک ها</a>
-        <a href="{% url 'salad' %}" class="list-group-item list-group-item-action">سالاد ها</a>
-        <a href="#" class="list-group-item list-group-item-action">منو های بیشتر اضافه کنید..</a>
+        {% for category in categories %}
+          <a href="{% url 'menu' %}#{{category.name|cut:' '}}" class="list-group-item list-group-item-action">{{category.name}}</a>
+        {% endfor %}
       </div>
       <div class="col-md-9">
         <div class="card text-dark bg-light mb-3 border-dark mb-3">

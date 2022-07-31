@@ -1,25 +1,22 @@
 from django.views.generic import ListView
 
-from .models import Cake, Salad
+from .models import Category, Product
+
+from cart.forms import CartAddProductForm
 
 
-class Menu(ListView):
-    model = ''
+class MenuView(ListView):
+    model = Product
     template_name = 'menu.html'
-    context_object_name = 'items'
-
-
-class CakeView(Menu):
-    model = Cake
-    extra_context = {'category_name': 'کیک ها'}
-
-
-class SaladView(Menu):
-    model = Salad
-    # extra_context = {'category_name': 'سالاد ها'}
-
+    queryset = Product.objects.filter(available=True).order_by('category', 'created')
+    context_object_name = 'products'
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        category_name = 'سالاد ها'
-        context['category_name'] = category_name
+        category_names = Category.objects.all().order_by('created')
+        context['category_names'] = category_names
+        
+        cart_product_form = CartAddProductForm()
+        context['cart_product_form'] = cart_product_form
+        
         return context

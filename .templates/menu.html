@@ -1,20 +1,31 @@
 {% extends "_base.html" %}
 
+
 {% block content %}
-  <h2>{{category_name}}</h2><br>
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <tbody>
-        {% for item in items %}
-          <tr><td>{{item.title}}
-          {% if item.description != NULL %}
-            <small class="text-muted">&nbsp;{{item.description}}</small></td>
-          {% endif %}
-            <td>{{item.price}} هزار تومان</td></tr>
-          {% empty %}
-            <p>هنوز هیچ موردی اضافه نشده است...</p>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+  {% for name in category_names %}
+    <div id="{{name|cut:' '}}">
+      <h2>{{name}}</h2><br>
+        <ul>
+            {% for product in products %}
+              {% if product.category == name %}
+                <li>
+                  {{product.name}}
+                  {% if product.description != NULL %}
+                    <small class="text-muted">&nbsp;{{product.description}}</small>
+                  {% endif %}
+                  {{product.price}} هزار تومان
+                </li>
+
+                <p>
+                  <form action="{% url 'cart_add' product.id %}" method="post">{% csrf_token %}
+                    {{ cart_product_form }}
+                    <input type="submit" value="🛒">
+                  </form>
+                </p>
+              {% endif %}
+            {% endfor %}
+        </ul>
+      <hr><br>
+    </div>
+  {% endfor %}
 {% endblock content%}

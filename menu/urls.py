@@ -1,8 +1,7 @@
 from django.urls import path
 
-from .views import CakeView, SaladView
+from .views import MenuView
 
 urlpatterns = [
-    path('cake/', CakeView.as_view(), name='cake'),
-    path('salad/', SaladView.as_view(), name='salad'),
+    path('', MenuView.as_view(), name='menu'),
 ]

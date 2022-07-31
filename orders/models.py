@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from menu.models import Cake, Salad
 
 User = get_user_model()
 
@@ -17,10 +16,6 @@ class OrderModel(models.Model):
         auto_now=True, verbose_name='آخرین ویرایش')
     editable = models.BooleanField(default=True, verbose_name='قابل ویرایش')
 
-    cake = models.ManyToManyField(
-        Cake, blank=True, verbose_name='کیک ها')
-    salad = models.ManyToManyField(
-        Salad, blank=True, verbose_name='سالاد ها')
     description = models.TextField(
         blank=True, null=True, max_length=500, verbose_name='توضیحات')
 

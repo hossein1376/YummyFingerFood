@@ -6,4 +6,4 @@ from .models import OrderModel
 class OrderForm (ModelForm):
     class Meta:
         model = OrderModel
-        fields = ('cake', 'salad', 'description')
+        fields = ('description',)

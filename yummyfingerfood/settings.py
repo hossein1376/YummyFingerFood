@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'accounts',
     'orders',
     'menu',
+    'cart',
     'api',
 ]
 
@@ -59,6 +60,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # Custum context processors
+                'cart.context_processors.cart',
+                'menu.context_processors.categories',
             ],
         },
     },
@@ -140,3 +145,6 @@ JALALI_DATE_DEFAULTS = {
         'datetime': '%Y/%m/%d - %H:%M',
     }
 }
+
+# Cart Settings
+CART_SESSION_ID = 'cart'
