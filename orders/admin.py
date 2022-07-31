@@ -2,22 +2,29 @@ from django.contrib import admin
 from jalali_date import datetime2jalali
 from jalali_date.admin import ModelAdminJalaliMixin
 
-from .models import OrderModel
+from .models import Order, OrderItem
+
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    raw_id_fields = ['product']
 
 
 class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    readonly_fields = ('order_date', 'updated_at')
-    list_display = ['id', 'order_date_jalali',
-                    'updated_at_jalali', 'editable', ]
+    readonly_fields = ('created_jalali', 'updated_jalali')
+    list_display = ['id', 'created_jalali',
+                    'updated_jalali', 'editable', 'paid', ]
+    list_filter = ['paid', 'created', 'updated']
+    inlines = [OrderItemInline]
 
-    def order_date_jalali(self, obj):
-        return datetime2jalali(obj.order_date).strftime('%Y/%m/%d - %H:%M')
+    def created_jalali(self, obj):
+        return datetime2jalali(obj.created).strftime('%Y/%m/%d - %H:%M')
 
-    def updated_at_jalali(self, obj):
-        return datetime2jalali(obj.updated_at).strftime('%Y/%m/%d - %H:%M')
+    def updated_jalali(self, obj):
+        return datetime2jalali(obj.updated).strftime('%Y/%m/%d - %H:%M')
 
-    order_date_jalali.short_description = 'تاریخ ثبت سفارش'
-    updated_at_jalali.short_description = 'آخرین ویرایش'
+    created_jalali.short_description = 'تاریخ ثبت سفارش'
+    updated_jalali.short_description = 'آخرین ویرایش'
 
 
-admin.site.register(OrderModel, OrderAdmin)
+admin.site.register(Order, OrderAdmin)
