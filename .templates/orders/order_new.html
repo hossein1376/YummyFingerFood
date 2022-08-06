@@ -2,12 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h3>Your order</h3>
+<h3>سفارش شما:</h3>
 <ul>
   {% for item in cart %}
     <li>
       <strong>{{ item.quantity }}</strong> عدد <strong>{{ item.product.name }}</strong>
-      <span> به قیمت <strong>{{ item.total_price }}</strong> هزار تومان</span>
+      <span> به قیمت واحد <strong>{{ item.total_price }}</strong> هزار تومان</span>
     </li>
   {% endfor %}
 </ul>
